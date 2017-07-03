@@ -6,9 +6,9 @@ import {
 import {
   Nav,
   Navbar,
-  NavItem
 } from 'react-bootstrap';
 import Routes from './Routes';
+import RouteNavItem from './components/RouteNavItem';
 import './App.css';
 
 class App extends Component {
@@ -30,8 +30,8 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem onClick={this.handleNavLink} href="/signup">Signup</NavItem>
-              <NavItem onClick={this.handleNavLink} href="/login">Login</NavItem>
+              <RouteNavItem onClick={this.handleNavLink} href="/signup">Signup</RouteNavItem>
+              <RouteNavItem onClick={this.handleNavLink} href="/login">Login</RouteNavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

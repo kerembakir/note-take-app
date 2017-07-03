@@ -43,3 +43,16 @@ functions:
           cors: true
           authorizer:
             arn: arn:aws:cognito-idp:us-east-2:442612872393:userpool/us-east-2_93RI4qz0R
+
+  get:
+    # Defines an HTTP API endpoint that calls the main function in get.js
+    # - path: url path is /notes/{id}
+    # - method: GET request
+    handler: get.main
+    events:
+      - http:
+          path: notes/{id}
+          method: get
+          cors: true
+          authorizer:
+            arn: arn:aws:cognito-idp:us-east-2:442612872393:userpool/us-east-2_93RI4qz0R

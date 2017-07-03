@@ -40,13 +40,14 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _stringify = __webpack_require__(1);
+	var _stringify = __webpack_require__(7);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -68,10 +69,12 @@
 	};
 
 /***/ }),
-/* 1 */
+
+/***/ 7:
 /***/ (function(module, exports) {
 
 	module.exports = require("babel-runtime/core-js/json/stringify");
 
 /***/ })
-/******/ ])));
+
+/******/ })));

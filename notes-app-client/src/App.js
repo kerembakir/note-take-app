@@ -5,7 +5,8 @@ import {
 } from 'react-router-dom';
 import {
   Nav,
-  Navbar,
+  NavItem,
+  Navbar
 } from 'react-bootstrap';
 import Routes from './Routes';
 import RouteNavItem from './components/RouteNavItem';
@@ -32,6 +33,10 @@ class App extends Component {
   this.props.history.push(event.currentTarget.getAttribute('href'));
   }
 
+  handleLogout = (event) => {
+    this.updateUserToken(null);
+  }  
+
   render() {
 
     const childProps = {
@@ -50,8 +55,10 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <RouteNavItem onClick={this.handleNavLink} href="/signup">Signup</RouteNavItem>
-              <RouteNavItem onClick={this.handleNavLink} href="/login">Login</RouteNavItem>
+              { this.state.userToken
+                ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+                : [ <RouteNavItem key={1} onClick={this.handleNavLink} href="/signup">Signup</RouteNavItem>,
+                    <RouteNavItem key={2} onClick={this.handleNavLink} href="/login">Login</RouteNavItem> ] }
             </Nav>
           </Navbar.Collapse>
         </Navbar>

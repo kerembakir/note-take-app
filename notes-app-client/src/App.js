@@ -8,8 +8,10 @@ import {
   NavItem,
   Navbar
 } from 'react-bootstrap';
+import { CognitoUserPool, } from 'amazon-cognito-identity-js';
 import Routes from './Routes';
 import RouteNavItem from './components/RouteNavItem';
+import config from './config.js';
 import './App.css';
 
 class App extends Component {
@@ -27,6 +29,26 @@ class App extends Component {
       userToken: userToken
     });
   }
+
+  getCurrentUser() {
+    const userPool = new CognitoUserPool({
+      UserPoolId: config.cognito.USER_POOL_ID,
+      ClientId: config.cognito.APP_CLIENT_ID
+    });
+    return userPool.getCurrentUser();
+  }
+
+  getUserToken(currentUser) {
+    return new Promise((resolve, reject) => {
+      currentUser.getSession(function(err, session) {
+        if (err) {
+            reject(err);
+            return;
+        }
+        resolve(session.getIdToken().getJwtToken());
+      });
+    });
+  }  
 
   handleNavLink = (event) => {
   event.preventDefault();

@@ -76,8 +76,14 @@ class App extends Component {
   }
 
   handleLogout = (event) => {
+    const currentUser = this.getCurrentUser();
+
+    if (currentUser !== null) {
+      currentUser.signOut();
+    }
+
     this.updateUserToken(null);
-  }  
+  }
 
   render() {
 

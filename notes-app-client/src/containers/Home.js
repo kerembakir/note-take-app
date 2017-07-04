@@ -4,6 +4,7 @@ import {
   PageHeader,
   ListGroup,
 } from 'react-bootstrap';
+import { invokeApig } from '../libs/awsLib';
 import './Home.css';
 
 class Home extends Component {
@@ -15,6 +16,28 @@ class Home extends Component {
       isLoading: false,
       notes: [],
     };
+  }
+
+  async componentDidMount() {
+    if (this.props.userToken === null) {
+      return;
+    }
+
+    this.setState({ isLoading: true });
+
+    try {
+      const results = await this.notes();
+      this.setState({ notes: results });
+    }
+    catch(e) {
+      alert(e);
+    }
+
+    this.setState({ isLoading: false });
+  }
+
+  notes() {
+    return invokeApig({ path: '/notes' }, this.props.userToken);
   }
 
   renderNotesList(notes) {

@@ -19,6 +19,7 @@ class Login extends Component {
     super(props);
 
     this.state = {
+      isLoading: false,
       username: '',
       password: '',
     };
@@ -59,6 +60,8 @@ class Login extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
 
+    this.setState({ isLoading: true });
+
     try {
       const userToken = await this.login(this.state.username, this.state.password);
       this.props.updateUserToken(userToken);
@@ -66,6 +69,7 @@ class Login extends Component {
     }
     catch(e) {
       alert(e);
+      this.setState({ isLoading: false });
     }
   }
 

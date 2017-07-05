@@ -1,3 +1,5 @@
+//Change this file with you own credentials and rename to config.js
+
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
   s3: {

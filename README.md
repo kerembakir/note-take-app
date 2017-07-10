@@ -36,3 +36,5 @@ For the frontend:
 * Configure CloudFront to serve out the app
 * Point the domain with Route 53 to CloudFront
 * Set up SSL to serve the app over HTTPS
+
+Link to website: http://dn4af9r2nimgs.cloudfront.net/
